@@ -5,7 +5,7 @@ import hello_pb2_grpc
 
 
 class Hello(hello_pb2_grpc.HelloServicer):
-    FILE_NAME = '../response.txt'
+    FILE_NAME = './db.txt'
 
     def write_file(self, name, message):
         with open(self.FILE_NAME, 'a+') as f:

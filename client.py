@@ -37,10 +37,9 @@ def greet_with_message(stub, name, message):
     print(response, f'in {elapsed_time}secs')
     for r in response:
         print(r)
-    # with BytesIO(initial_bytes=response) as data:
-    #     print(data)
-    # count += 1
-    # return response
+        with open('response.txt', 'a+') as f:
+            texts = r.data.decode(encoding='utf-8')
+            f.write(texts)
 
 
 def run():
