@@ -1,30 +1,28 @@
 from __future__ import print_function
 import logging
-import threading
-import time
 import grpc
-
 from io import BytesIO, open
-from src.ExploreFormat import ExploreFormat
+from util.JsonOperator import getConf
 
 import path_pb2
 import path_pb2_grpc
 
 def run():
-    with grpc.insecure_channel('localhost:50051') as channel:
+    exploreInfo = getConf()
+    with grpc.insecure_channel('localhost'+':'+str(exploreInfo.control_port)) as channel:
         stub = path_pb2_grpc.PathStub(channel)
         
         request = path_pb2.PathRequest(
-            instance_id=123,
-            control_param=1,
-            service_type=2,
-            instance_status=3,
-            instance_version=1,
-            service_dest_address="192.168.1.1",
-            current_hop_count=1,
-            max_hop_count=10,
-            ttl=3600,
-            heartbeat_msg=0,
+            instance_id=exploreInfo.instance_id,
+            control_param=exploreInfo.control_param,
+            service_type=exploreInfo.service_type,
+            instance_status=exploreInfo.instance_state,
+            instance_version=exploreInfo.instance_version,
+            service_dest_address=exploreInfo.destination_address,
+            current_hop_count=exploreInfo.current_hop,
+            max_hop_count=exploreInfo.max_hop,
+            ttl=exploreInfo.ttl,
+            heartbeat_msg=exploreInfo.heartbeat,
             extension=b'example_extension'
         )
         

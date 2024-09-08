@@ -1,6 +1,7 @@
 class ExploreFormat:
     def __init__(self, instance_id, control_param, service_type, instance_state, instance_version,
-                 destination_address, current_hop, max_hop, ttl, heartbeat, return_port, return_address, extension):
+                 destination_address, current_hop, max_hop, ttl, heartbeat, return_port, return_address,
+                 extension, control_port):
         self.instance_id = instance_id                    # 实例标识 (2 bytes)
         self.control_param = control_param                # 控制参数 (2 bytes)
         self.service_type = service_type                  # 服务类型 (2 bytes)
@@ -14,6 +15,7 @@ class ExploreFormat:
         self.return_port = return_port                    # 返回端口 (2 bytes)
         self.return_address = return_address              # 返回地址 (4 bytes)
         self.extension = extension                        # 扩展 (4 bytes)
+        self.control_port = control_port                  # 控制端口
 
     def __repr__(self):
         return (f"ExploreFormat(instance_id={self.instance_id}, control_param={self.control_param}, "
@@ -21,5 +23,5 @@ class ExploreFormat:
                 f"instance_version={self.instance_version}, destination_address={self.destination_address}, "
                 f"current_hop={self.current_hop}, max_hop={self.max_hop}, ttl={self.ttl}, "
                 f"heartbeat={self.heartbeat}, return_port={self.return_port}, "
-                f"return_address={self.return_address}, extension={self.extension})")
+                f"return_address={self.return_address}, extension={self.extension}, control_port={self.control_port})")
     
