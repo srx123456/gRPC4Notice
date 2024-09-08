@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_outer_classname = "NoticeProto";
+option java_package = "io.notice";
+
+package Notice;
+
+service Path {
+    rpc Greet(PathRequest) returns (PathResponse) {}
+}
+
+message PathResponse {
+    instance_id = 1;           // 实例标识
+    control_param = 2;         // 控制参数
+    service_type = 3;          // 服务类型
+    instance_status = 4;       // 实例状态
+    instance_version = 5;      // 实例版本
+    string service_dest_address = 6; // 服务的目的地址
+    current_hop_count = 7;     // 当前跳数
+    max_hop_count = 8;         // 最大跳数
+    ttl = 9;                   // 报文生存时间
+    heartbeat_msg = 10;        // 心跳消息
+    return_port = 11;          // 返回端口
+    string return_address = 12;     // 返回地址
+    bytes extension = 13;            // 扩展
+}
+
+message PathRequest {
+    instance_id = 1;           // 实例标识
+    control_param = 2;         // 控制参数
+    service_type = 3;          // 服务类型
+    instance_status = 4;       // 实例状态
+    instance_version = 5;      // 实例版本
+    string service_dest_address = 6; // 服务的目的地址
+    current_hop_count = 7;     // 当前跳数
+    max_hop_count = 8;         // 最大跳数
+    ttl = 9;                   // 报文生存时间
+    heartbeat_msg = 10;        // 心跳消息
+    bytes extension = 11;            // 扩展
+}

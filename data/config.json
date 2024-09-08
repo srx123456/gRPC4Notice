@@ -1,0 +1,14 @@
+{
+    "ControlPort":50051,
+    "instance_id":123, 
+    "control_param":1,         
+    "service_type":1,
+    "instance_status":1, 
+    "instance_version":4,
+    "service_dest_address":"sarIP",
+    "current_hop_count":0, 
+    "max_hop_count":10,       
+    "ttl":10,                   
+    "heartbeat_msg":1,        
+    "extension":null
+}
